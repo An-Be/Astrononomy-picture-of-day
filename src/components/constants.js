@@ -1,0 +1,1 @@
+const key = 'https://api.nasa.gov/planetary/apod?api_key=NCJLsgzjl5fcCvB1jtRpG1lPz44zfiwuCso1jQMp'

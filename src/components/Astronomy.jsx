@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Astronomy.scss";
+import { API_URL } from "../../constants";
 
 export const Astronomy = () => {
   const [pictureOfDay, setPictureOfDay] = useState(null);
 
   const fetchPictureOfDay = async () => {
-    const res = await fetch(
-      "https://api.nasa.gov/planetary/apod?api_key=NCJLsgzjl5fcCvB1jtRpG1lPz44zfiwuCso1jQMp"
-    );
+    const res = await fetch(API_URL);
     const data = await res.json();
     setPictureOfDay(data);
     console.log(data);
