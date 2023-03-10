@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Astronomy.scss";
-import { API_URL } from "../../constants";
+import { API_URL } from "./constants";
 
 export const Astronomy = () => {
   const [pictureOfDay, setPictureOfDay] = useState(null);
