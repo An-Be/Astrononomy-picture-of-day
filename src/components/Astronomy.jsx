@@ -25,13 +25,13 @@ export const Astronomy = () => {
           src={pictureOfDay?.url}
           alt="pic of day"
         />
+                <p className="wrapper__bottom-wrapper__copyright">
+          Copyright: {pictureOfDay?.copyright}
+        </p>
       </div>
       <div className="wrapper__bottom-wrapper">
         <p className="wrapper__bottom-wrapper__explanation">
           {pictureOfDay?.explanation}
-        </p>
-        <p className="wrapper__bottom-wrapper__copyright">
-          Copyright: {pictureOfDay?.copyright}
         </p>
       </div>
     </div>
