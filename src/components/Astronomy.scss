@@ -1,4 +1,8 @@
 .wrapper {
+  z-index:100;
+  position: absolute;
+  top: 15vh;
+  right: 45vh;
   display: grid;
   gap: 1rem;
   align-items: center;
@@ -31,6 +35,9 @@
     &__explanation {
         font-style: italic;
         line-height: 25px;
+        background-color: #444444;
+        border-radius: 1rem;
+        padding: 10px;
     }
   }
 }

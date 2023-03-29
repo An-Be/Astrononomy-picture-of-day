@@ -1,10 +1,13 @@
-import './App.scss';
-import { Astronomy } from './components/Astronomy';
+import "./App.scss";
+import { Astronomy } from "./components/Astronomy";
+import ParticleBackground from "react-particle-backgrounds";
+import { particles } from "./particles";
 
 function App() {
   return (
     <div className="App">
-      <h1>Astronomy Picture Of The Day</h1>
+      <ParticleBackground settings={particles} />
+      <h1 className="title">Astronomy Picture Of The Day</h1>
       <Astronomy />
     </div>
   );
