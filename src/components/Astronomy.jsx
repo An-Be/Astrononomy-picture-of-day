@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Astronomy.scss";
 import { API_URL } from "./constants";
+import Loader from "./Loader";
 
 export const Astronomy = () => {
   const [pictureOfDay, setPictureOfDay] = useState(null);
@@ -23,9 +24,8 @@ export const Astronomy = () => {
   return (
     <>
     {error && <h1 className="error">{error}</h1>}
-    {pictureOfDay ?
+    {!pictureOfDay && !error ? <div className="loader-wrapper"><Loader /></div> :
     <div className="wrapper">
-       
       <div className="wrapper__top-wrapper">
         <img
           className="wrapper__top-wrapper__nasa"
@@ -47,7 +47,7 @@ export const Astronomy = () => {
           {pictureOfDay?.explanation}
         </p>
       </div>
-    </div> : <div></div> }
+    </div> }
     </>
   );
 };
