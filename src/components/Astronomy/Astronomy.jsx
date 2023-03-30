@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Astronomy.scss";
 import { API_URL } from "./constants";
-import Loader from "./Loader";
+import Loader from "../Loader/Loader";
 
 export const Astronomy = () => {
   const [pictureOfDay, setPictureOfDay] = useState(null);
@@ -29,7 +29,7 @@ export const Astronomy = () => {
       <div className="wrapper__top-wrapper">
         <img
           className="wrapper__top-wrapper__nasa"
-          src={require("../nasa_logo.png")}
+          src={require("../../images/nasa_logo.png")}
           alt="nasa logo"
         />
         <h1 className="wrapper__top-wrapper__title">{pictureOfDay?.title}</h1>

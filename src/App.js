@@ -1,5 +1,5 @@
 import "./App.scss";
-import { Astronomy } from "./components/Astronomy";
+import { Astronomy } from "./components/Astronomy/Astronomy";
 
 function App() {
   return (
