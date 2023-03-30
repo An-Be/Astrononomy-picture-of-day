@@ -19,6 +19,7 @@ export const Astronomy = () => {
   return (
     <div className="wrapper">
       <div className="wrapper__top-wrapper">
+        <img className="wrapper__top-wrapper__nasa" src={require('../nasa_logo.png')} alt='nasa logo' />
         <h1 className="wrapper__top-wrapper__title">{pictureOfDay?.title}</h1>
         <img
           className="wrapper__top-wrapper__image"
