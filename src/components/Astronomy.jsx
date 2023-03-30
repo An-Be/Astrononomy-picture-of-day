@@ -9,7 +9,6 @@ export const Astronomy = () => {
     const res = await fetch(API_URL);
     const data = await res.json();
     setPictureOfDay(data);
-    console.log(data);
   };
 
   useEffect(() => {
