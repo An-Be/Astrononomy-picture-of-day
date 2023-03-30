@@ -9,12 +9,6 @@ describe("App", () => {
     });
   });
 
-  test("renders app and checks if nasa logo present", () => {
-    render(<App />);
-    const nasaLogo = screen.getByAltText(/nasa logo/i);
-    expect(nasaLogo).toBeInTheDocument();
-  });
-
   test("renders astronomy data when API call succeeds", async () => {
     const fakeAstronomyData = {
       copyright: "Matias Tomasello",
@@ -44,7 +38,10 @@ describe("App", () => {
       expect(
         screen.queryByText("Sorry something went wrong, please try again.")
       ).not.toBeInTheDocument();
+      const nasaLogo = screen.getByAltText(/nasa logo/i);
+      expect(nasaLogo).toBeInTheDocument();
     });
+
   });
 
   test("renders error when API call fails", async () => {
