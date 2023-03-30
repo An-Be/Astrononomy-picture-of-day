@@ -12,7 +12,7 @@
   padding: 5rem;
   border-radius: 1rem;
   color: white;
-  background-color: hsla(240, 3%, 94%, 0.2);  
+  background-color: hsla(240, 3%, 94%, 0.2); 
   &__top-wrapper {
     display: flex;
     flex-direction: column;
@@ -47,3 +47,15 @@
     }
   }
 }
+.error{
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);  
+  padding: 2rem;
+  border-radius: 1rem;
+  color: white;
+  background-color: hsla(240, 3%, 94%, 0.2); 
+  text-align: center;
+  top: 20%;
+  position: sticky;
+  width: 400px;
+  margin: auto;
+} 

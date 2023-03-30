@@ -4,11 +4,16 @@ import { API_URL } from "./constants";
 
 export const Astronomy = () => {
   const [pictureOfDay, setPictureOfDay] = useState(null);
+  const [error, setError] = useState(null)
 
   const fetchPictureOfDay = async () => {
-    const res = await fetch(API_URL);
-    const data = await res.json();
-    setPictureOfDay(data);
+    try{
+      const res = await fetch(API_URL);
+      const data = await res.json();
+      setPictureOfDay(data);
+    }catch(e){
+      setError('Sorry something went wrong, please try again.')
+    }
   };
 
   useEffect(() => {
@@ -16,16 +21,24 @@ export const Astronomy = () => {
   }, []);
 
   return (
+    <>
+    {error && <h1 className="error">{error}</h1>}
+    {pictureOfDay ?
     <div className="wrapper">
+       
       <div className="wrapper__top-wrapper">
-        <img className="wrapper__top-wrapper__nasa" src={require('../nasa_logo.png')} alt='nasa logo' />
+        <img
+          className="wrapper__top-wrapper__nasa"
+          src={require("../nasa_logo.png")}
+          alt="nasa logo"
+        />
         <h1 className="wrapper__top-wrapper__title">{pictureOfDay?.title}</h1>
         <img
           className="wrapper__top-wrapper__image"
           src={pictureOfDay?.url}
           alt="pic of day"
         />
-                <p className="wrapper__bottom-wrapper__copyright">
+        <p className="wrapper__bottom-wrapper__copyright">
           Copyright: {pictureOfDay?.copyright}
         </p>
       </div>
@@ -34,6 +47,7 @@ export const Astronomy = () => {
           {pictureOfDay?.explanation}
         </p>
       </div>
-    </div>
+    </div> : <div></div> }
+    </>
   );
 };
