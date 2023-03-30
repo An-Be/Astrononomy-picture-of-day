@@ -14,12 +14,12 @@ jobs:
         with:
           node-version: 16.x
           registry-url: https://registry.npmjs.org
-      - name: Write constants.json
+      - name: Write constants.js
         env: 
           API_URL: ${{ secrets.API_URL }}
         run: |
-          touch src/components/constanst.json
-          echo $API_URL >> src/components/constanst.json
-          cat  src/components/constanst.json
+          touch src/components/constants.js
+          echo $API_URL >> src/components/constants.js
+          cat  src/components/constants.js
       - run: npm ci --ignore-scripts
       - run: npm test
