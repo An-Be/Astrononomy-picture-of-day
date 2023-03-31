@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Astronomy.scss";
-import { API_URL } from "./constants";
+//import { API_URL } from "./constants";
 import Loader from "../Loader/Loader";
 
 export const Astronomy = () => {
@@ -9,10 +9,9 @@ export const Astronomy = () => {
 
   const fetchPictureOfDay = async () => {
     try {
-      const res = await fetch(API_URL);
+      const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_URL}`);
       const data = await res.json();
       setPictureOfDay(data);
-      console.log(data);
     } catch (e) {
       setError("Sorry something went wrong, please try again.");
     }
