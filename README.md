@@ -1,3 +1,23 @@
+# Astronomy Picture of Day
+
+This is a project to showcase usage of CI/CD with github actions and docker with a docker file and docker-compose file
+
+## Github Actions
+
+- Test yaml to npm ci and run tests before any merges to main
+- Build yaml to deploy app to railway when merge to main is complete
+
+## Run Project Using Docker
+- fork and clone repo
+- to run application using docker have docker desktop up and running
+- run ```docker-compose up``` in terminal
+
+## Run Project Locally
+- fork and clone repo
+- ```npm i``` 
+- ```npm start```
+- You will need your own free api key for Astronomy Picture of the day from NASA which can be added in a ```.env``` file in root of folder named ```REACT_APP_API_URL```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
