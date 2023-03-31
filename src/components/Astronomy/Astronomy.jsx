@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Astronomy.scss";
-//import { API_URL } from "./constants";
 import Loader from "../Loader/Loader";
 
 export const Astronomy = () => {
