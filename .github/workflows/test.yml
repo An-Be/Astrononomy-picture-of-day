@@ -14,12 +14,5 @@ jobs:
         with:
           node-version: 16.x
           registry-url: https://registry.npmjs.org
-      - name: Write constants.js
-        env: 
-          API_URL: ${{ secrets.API_URL }}
-        run: |
-          touch src/components/Astronomy/constants.js
-          echo $API_URL >> src/components/Astronomy/constants.js
-          cat  src/components/Astronomy/constants.js
       - run: npm ci --ignore-scripts
       - run: npm test
