@@ -14,13 +14,15 @@
   color: white;
   background-color: hsla(240, 3%, 94%, 0.2); 
   @media(max-width: 600px){
+    gap: 0;
     grid-template-columns: 300px;
-    gap: 0rem;
-    top: 0;
-    max-height: 600px;
-    margin: 0;
-    padding: 2rem 2rem 10rem 2rem;
+    margin-top: 1rem;
+    max-height: 700px;
     overflow: auto;
+    padding: 4rem 2rem 10rem 2rem;
+    top: 0;
+    box-shadow: none;
+    background-color: transparent;
   }
   &__top-wrapper {
     display: flex;
@@ -32,6 +34,12 @@
     }
     &__nasa{
       max-width: 38%;
+      @media(max-width: 600px){
+        background-color: hsla(240, 3%, 94%, 0.2);
+        padding: 1rem;
+        border-radius: 1rem;
+      }
+
     }
     &__title{
       background-color: #444444;
