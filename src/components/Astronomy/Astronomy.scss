@@ -32,6 +32,7 @@
     margin: auto;
     @media (max-width: 600px) {
       top: 0;
+      text-align: center;
     }
     &__nasa {
       max-width: 38%;
@@ -64,6 +65,7 @@
       padding-bottom: 2rem;
       padding-top: 4rem;
       margin-bottom: 1rem;
+      text-align: center;
     }
     &__explanation {
       font-style: italic;
