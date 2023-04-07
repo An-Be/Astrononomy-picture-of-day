@@ -6,6 +6,7 @@ This is a project to showcase usage of CI/CD with github actions and docker with
 
 - Test yaml to npm ci and run tests before any merges to main
 - Build yaml to deploy app to railway when merge to main is complete (railway is integrated with vercel)
+- To get the build yaml working you will have to go into build.yml and uncomment the code and add your own railway token to your repo
 
 ## Run Project Using Docker
 - fork and clone repo
