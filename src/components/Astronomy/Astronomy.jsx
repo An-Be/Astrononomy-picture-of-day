@@ -28,11 +28,19 @@ export const Astronomy = () => {
           <Loader />
         </div>
       ) : (
+        
         <div className="wrapper">
           <div className="wrapper__top-wrapper">
+          <div className="rainbow">
+                    <div className="yellow"></div>
+                    <div className="aqua"></div>
+                    <div className="green"></div>
+                    <div className="red"></div>
+                    <div className="blue"></div>
+                </div>
             <img
               className="wrapper__top-wrapper__nasa"
-              src={require("../../images/nasa_logo.png")}
+              src={require("../../images/nasa.png")}
               alt="nasa logo"
             />
             <h1 className="wrapper__top-wrapper__title">

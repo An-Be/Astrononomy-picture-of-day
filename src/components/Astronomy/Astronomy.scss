@@ -9,11 +9,12 @@
   max-width: 700px;
   margin: auto;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  padding: 5rem;
+  padding: 2rem;
   border-radius: 1rem;
   color: white;
-  background-color: hsla(240, 3%, 94%, 0.2);
-  @media (max-width: 600px) {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  @media (max-width: 1000px) {
     gap: 0;
     grid-template-columns: 300px;
     margin-top: 5px;
@@ -23,43 +24,38 @@
     padding: 1rem 2rem 20rem 2rem;
     top: 0;
     box-shadow: none;
-    background-color: transparent;
+    background: transparent;
+    backdrop-filter: none;
   }
+
   &__top-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
-    @media (max-width: 600px) {
+
+    @media (max-width: 1000px) {
       top: 0;
       text-align: center;
     }
+
     &__nasa {
       max-width: 38%;
-      @media (max-width: 600px) {
-        background-color: hsla(240, 3%, 94%, 0.2);
-        padding: 1rem;
-        border-radius: 1rem;
-      }
     }
+
     &__title {
-      background-color: #444444;
       border-radius: 1rem;
       padding: 10px;
     }
+
     &__image {
       width: 100%;
       height: 100%;
-      border-radius: 1rem;
     }
   }
+
   &__bottom-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 41px;
-    position: relative;
-    @media (max-width: 600px) {
+    @media (max-width: 1000px) {
       top: 0;
       height: 100%;
       padding-bottom: 2rem;
@@ -67,15 +63,16 @@
       margin-bottom: 1rem;
       text-align: center;
     }
+
     &__explanation {
-      font-style: italic;
-      line-height: 25px;
-      background-color: #444444;
-      border-radius: 1rem;
-      padding: 10px;
+      line-height: 28px;
+    }
+    &__copyright{
+      font-size: 10px;
     }
   }
 }
+
 .error {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   padding: 2rem;
@@ -88,13 +85,51 @@
   width: 400px;
   margin: auto;
 }
+
 .loader-wrapper {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   padding: 2rem;
   border-radius: 1rem;
-  background-color: hsla(240, 3%, 94%, 0.2);
   top: 20%;
   position: sticky;
   width: 150px;
   margin: auto;
+}
+
+.rainbow{
+  display: flex;
+  position: fixed;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
+
+.yellow {
+  background: #FFFF67;
+  width: 1rem;
+  height: 1rem;
+}
+
+.aqua {
+  background: #3FFFFF;
+  width: 1rem;
+  height: 1rem;
+}
+
+.green {
+  background: #52DC4B;
+  width: 1rem;
+  height: 1rem;
+}
+
+.red {
+  background: #FF6E3D;
+  width: 1rem;
+  height: 1rem;
+}
+
+.blue {
+  background: #3D45FF;
+  width: 1rem;
+  height: 1rem;
 }
