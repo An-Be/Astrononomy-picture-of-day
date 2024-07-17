@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Astronomy.scss";
 import Loader from "../Loader/Loader";
+import ReactPlayer from 'react-player'
 
 export const Astronomy = () => {
   const [pictureOfDay, setPictureOfDay] = useState(null);
@@ -16,6 +17,8 @@ export const Astronomy = () => {
     }
   };
 
+  console.log(pictureOfDay)
+
   useEffect(() => {
     fetchPictureOfDay();
   }, []);
@@ -28,16 +31,16 @@ export const Astronomy = () => {
           <Loader />
         </div>
       ) : (
-        
+
         <div className="wrapper">
           <div className="wrapper__top-wrapper">
-          <div className="rainbow">
-                    <div className="yellow"></div>
-                    <div className="aqua"></div>
-                    <div className="green"></div>
-                    <div className="red"></div>
-                    <div className="blue"></div>
-                </div>
+            <div className="rainbow">
+              <div className="yellow"></div>
+              <div className="aqua"></div>
+              <div className="green"></div>
+              <div className="red"></div>
+              <div className="blue"></div>
+            </div>
             <img
               className="wrapper__top-wrapper__nasa"
               src={require("../../images/nasa.png")}
@@ -46,11 +49,24 @@ export const Astronomy = () => {
             <h1 className="wrapper__top-wrapper__title">
               {pictureOfDay?.title}
             </h1>
-            <img
-              className="wrapper__top-wrapper__image"
-              src={pictureOfDay?.url}
-              alt="pic of day"
-            />
+            {
+              pictureOfDay.media_type === 'video' ?
+                <ReactPlayer
+                  url={pictureOfDay?.url}
+                  width='100%'
+                  height='100%'
+                  controls={true}
+
+                />
+                :
+                <img
+                  className="wrapper__top-wrapper__image"
+                  src={pictureOfDay?.url}
+                  alt="pic of day"
+                />
+
+            }
+
             {pictureOfDay?.copyright ? (
               <p className="wrapper__bottom-wrapper__copyright">
                 Copyright: {pictureOfDay?.copyright}
