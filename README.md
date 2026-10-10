@@ -1,91 +1,46 @@
-# Astronomy Picture of Day
+# Picture of the Day
 
-This is a project to showcase usage of CI/CD with github actions and docker with a docker file and docker-compose file
+NASA's [Astronomy Picture of the Day](https://science.nasa.gov/apod/),
+one image (or video) of the universe every day, with its credit and explanation.
 
-## Github Actions
+Built on [tool-template](https://github.com/An-Be/tool-template): Next.js 16,
+React 19, TypeScript, Tailwind 4 and the shared monochrome design system. The
+NASA request runs on the server, so the API key never reaches the browser.
 
-- Test yaml to npm ci and run tests before any merges to main
-- Build yaml to deploy app to railway when merge to main is complete (railway is integrated with vercel)
-- To get the build yaml working you will have to go into build.yml and uncomment the code and add your own railway token to your repo
+## Run it
 
-## Run Project Using Docker
-- fork and clone repo
-- to run application using docker have docker desktop up and running
-- run ```docker-compose up``` in terminal
+```bash
+npm install
+cp .env.example .env   # optional: add a free NASA_API_KEY from https://api.nasa.gov
+npm run dev
+```
 
-## Run Project Locally
-- fork and clone repo
-- ```npm i``` 
-- ```npm start```
-- You will need your own free api key for Astronomy Picture of the day from NASA which can be added in a ```.env``` file in root of folder named ```REACT_APP_API_URL```
+Without a key the app uses NASA's `DEMO_KEY`, which is fine locally but limited
+to 30 requests an hour.
 
-# Getting Started with Create React App
+## Commands
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```bash
+npm run dev         # dev server
+npm run build       # production build
+npm run typecheck   # next typegen + tsc
+npm run lint
+npm test            # vitest
+```
 
-## Available Scripts
+## Deploy
 
-In the project directory, you can run:
+Vercel, region `cle1` (`vercel.json`). Add `NASA_API_KEY` as a Sensitive
+environment variable for Production. A push to `main` deploys.
 
-### `npm start`
+## How it's put together
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| File | Does |
+| --- | --- |
+| `src/lib/server/apod.ts` | fetches today's APOD (server-only, cached for an hour) |
+| `src/lib/apod.ts` | validates NASA's response and picks image, video, embed or link; tested |
+| `src/components/apod/apod-media.tsx` | renders the media |
+| `src/config/csp.ts` | allows NASA's image hosts and YouTube/Vimeo embeds |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+More detail, and how this repo differs from the template, is in
+[`AGENTS.md`](./AGENTS.md#this-tool).
