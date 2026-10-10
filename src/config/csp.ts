@@ -3,12 +3,15 @@ import { mergeDirectives, type CspDirectives } from "@/lib/csp";
 
 // Per-tool additions to the Content-Security-Policy, merged into the strict
 // defaults in src/lib/csp.ts. Add only the origins a feature actually needs and
-// say why next to each one. Hosts here must match APOD_MEDIA_HOST and
+// say why next to each one. Hosts here must match APOD_MEDIA_HOSTS and
 // VIDEO_EMBED_HOSTS in src/lib/apod.ts, which decide what renders inline.
 export const cspAllowlist: CspDirectives = mergeDirectives(
   {
-    "img-src": ["https://apod.nasa.gov"], // the day's picture
-    "media-src": ["https://apod.nasa.gov"], // self-hosted APOD videos (.mp4)
+    "img-src": [
+      "https://assets.science.nasa.gov", // the day's picture (APOD's home since 2026)
+      "https://apod.nasa.gov", // older entries still hosted on the original site
+    ],
+    "media-src": ["https://assets.science.nasa.gov", "https://apod.nasa.gov"], // self-hosted APOD videos (.mp4)
     "frame-src": [
       "https://www.youtube.com", // most APOD videos are YouTube embeds
       "https://www.youtube-nocookie.com", // privacy-enhanced YouTube embeds

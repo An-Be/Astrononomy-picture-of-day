@@ -1,6 +1,6 @@
 # Picture of the Day
 
-NASA's [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html),
+NASA's [Astronomy Picture of the Day](https://science.nasa.gov/apod/),
 one image (or video) of the universe every day, with its credit and explanation.
 
 Built on [tool-template](https://github.com/An-Be/tool-template): Next.js 16,
@@ -40,7 +40,7 @@ environment variable for Production. A push to `main` deploys.
 | `src/lib/server/apod.ts` | fetches today's APOD (server-only, cached for an hour) |
 | `src/lib/apod.ts` | validates NASA's response and picks image, video, embed or link; tested |
 | `src/components/apod/apod-media.tsx` | renders the media |
-| `src/config/csp.ts` | allows `apod.nasa.gov` images/videos and YouTube/Vimeo embeds |
+| `src/config/csp.ts` | allows NASA's image hosts and YouTube/Vimeo embeds |
 
 More detail, and how this repo differs from the template, is in
 [`AGENTS.md`](./AGENTS.md#this-tool).

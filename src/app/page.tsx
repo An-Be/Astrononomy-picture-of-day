@@ -3,7 +3,7 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { SectionLabel } from "@/components/ui/section-label";
 import { Shell } from "@/components/ui/shell";
-import { archiveUrl, formatApodDate } from "@/lib/apod";
+import { formatApodDate } from "@/lib/apod";
 import { getPictureOfDay } from "@/lib/server/apod";
 
 export default async function Home() {
@@ -38,14 +38,14 @@ export default async function Home() {
 
           <section className="flex flex-col gap-3">
             <ApodMediaView media={apod.media} title={apod.title} />
-            {apod.copyright ? <p className="label text-mute">© {apod.copyright}</p> : null}
+            {apod.credit ? <p className="label text-mute">Credit: {apod.credit}</p> : null}
           </section>
 
           <section>
             <SectionLabel
               n="01"
               aside={
-                <a href={archiveUrl(apod.date)} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-ink">
+                <a href={apod.pageUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-ink">
                   NASA page
                 </a>
               }

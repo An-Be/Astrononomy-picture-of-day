@@ -10,7 +10,7 @@ export function ApodMediaView({ media, title }: { media: ApodMedia; title: strin
     return (
       <a href={media.full} target="_blank" rel="noopener noreferrer" className="block border border-ink">
         {/* eslint-disable-next-line @next/next/no-img-element -- remote NASA image; next/image would proxy every day's photo through our optimizer for no gain */}
-        <img src={media.src} alt={title} className="block h-auto w-full" />
+        <img src={media.src} alt={media.alt} className="block h-auto w-full" />
       </a>
     );
   }

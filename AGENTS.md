@@ -157,14 +157,21 @@ login, nothing stored.
 ### How it works
 
 - `src/app/page.tsx` (Server Component) calls `getPictureOfDay()` in
-  `src/lib/server/apod.ts`, which fetches `https://api.nasa.gov/planetary/apod`
-  with `NASA_API_KEY` (falls back to `DEMO_KEY`) and caches it for an hour with
-  `next: { revalidate: 3600 }`. It never throws; failures render the error state.
+  `src/lib/server/apod.ts`, which fetches
+  `https://science.nasa.gov/wp-json/wp/v2/apod-basic/` (APOD's home since it left
+  apod.nasa.gov / api.nasa.gov in 2026) with `NASA_API_KEY` (falls back to
+  `DEMO_KEY`) and caches it for an hour with `next: { revalidate: 3600 }`.
+  Without a date the endpoint returns recent entries as an array; we show the
+  newest. It never throws; failures render the error state.
 - `src/lib/apod.ts` (pure, tested) validates the response with Zod and decides
-  how to show the media with `toMedia()`: an `apod.nasa.gov` image, a native
+  how to show the media with `toMedia()`. For images the picture is `hdurl` on
+  `assets.science.nasa.gov` (`url` is the article page), scaled to 1600px wide
+  for the page via the CDN's `w`/`h` params. Videos get a native
   `<video>` for self-hosted `.mp4`/`.webm`, an `<iframe>` for YouTube/Vimeo, or
   a link to NASA's page for anything else.
-- **Any new media host must be added in two places**: `APOD_MEDIA_HOST` /
+- NASA's `explanation`, `copyright` and `credit` contain HTML. `htmlToText()`
+  turns them into plain text; never render them as HTML.
+- **Any new media host must be added in two places**: `APOD_MEDIA_HOSTS` /
   `VIDEO_EMBED_HOSTS` in `src/lib/apod.ts` and the matching directive in
   `src/config/csp.ts`. `toMedia()` only renders inline what the CSP allows.
 - Never log the NASA request URL: it carries the key. Log the status only.
@@ -187,5 +194,6 @@ login, nothing stored.
   template before adding any route that writes or costs money.
 - **Public and indexable**: `site.indexable` is `true`.
 - **Remote media**: the APOD image is a plain `<img>` (lint rule disabled inline,
-  with a reason), and the CSP allows `img-src`/`media-src` `apod.nasa.gov` plus
+  with a reason), and the CSP allows `img-src`/`media-src`
+  `assets.science.nasa.gov` and `apod.nasa.gov` plus
   `frame-src` for YouTube and Vimeo.
