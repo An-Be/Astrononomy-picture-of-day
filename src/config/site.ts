@@ -9,6 +9,8 @@ export const site = {
   author: { name: "Andrea", url: "https://andreaberrocal.com" },
   /** Browser UI color. Paper white keeps the monochrome look. */
   themeColor: "#ffffff",
+  /** Browser UI color in dark mode; matches --color-paper there. */
+  themeColorDark: "#0b0b0b",
   /**
    * Secret-link tools should stay out of search engines. Flip to true only for a
    * tool whose pages are meant to be public.
